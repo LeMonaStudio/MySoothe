@@ -24,12 +24,15 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -73,6 +76,24 @@ fun AlignYourBodyElement(
     modifier: Modifier = Modifier
 ) {
     // Implement composable here
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painterResource(id = R.drawable.ab1_inversions),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(80.dp)
+                .clip(CircleShape),
+            contentDescription = null
+        )
+        Text(
+            stringResource(id = R.string.ab1_inversions),
+            style = MaterialTheme.typography.h3,
+            modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
+        )
+    }
 }
 
 // Step: Favorite collection card - Material Surface
