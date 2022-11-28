@@ -73,6 +73,8 @@ fun SearchBar(
 // Step: Align your body - Alignment
 @Composable
 fun AlignYourBodyElement(
+    @DrawableRes drawable: Int,
+    @StringRes text: Int,
     modifier: Modifier = Modifier
 ) {
     // Implement composable here
@@ -81,7 +83,7 @@ fun AlignYourBodyElement(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painterResource(id = R.drawable.ab1_inversions),
+            painterResource(id = drawable),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(80.dp)
@@ -89,7 +91,7 @@ fun AlignYourBodyElement(
             contentDescription = null
         )
         Text(
-            stringResource(id = R.string.ab1_inversions),
+            stringResource(id = text),
             style = MaterialTheme.typography.h3,
             modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
         )
@@ -99,9 +101,32 @@ fun AlignYourBodyElement(
 // Step: Favorite collection card - Material Surface
 @Composable
 fun FavoriteCollectionCard(
+    @DrawableRes drawable: Int,
+    @StringRes text: Int,
     modifier: Modifier = Modifier
 ) {
     // Implement composable here
+    Surface(
+        modifier = modifier,
+        shape = MaterialTheme.shapes.small
+    ) {
+        Row(
+            modifier = Modifier.width(192.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Image(
+                painter = painterResource(id = drawable),
+                contentDescription = null,
+                contentScale = ContentScale.Crop ,
+                modifier = Modifier.size(56.dp)
+            )
+            Text(
+                text = stringResource(id = text),
+                style = MaterialTheme.typography.h3,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+        }
+    }
 }
 
 // Step: Align your body row - Arrangements
@@ -180,6 +205,8 @@ fun SearchBarPreview() {
 fun AlignYourBodyElementPreview() {
     MySootheTheme {
         AlignYourBodyElement(
+            R.drawable.ab1_inversions,
+            R.string.ab1_inversions,
             modifier = Modifier.padding(8.dp)
         )
     }
@@ -190,6 +217,8 @@ fun AlignYourBodyElementPreview() {
 fun FavoriteCollectionCardPreview() {
     MySootheTheme {
         FavoriteCollectionCard(
+            drawable = R.drawable.fc2_nature_meditations,
+            text = R.string.ab1_inversions,
             modifier = Modifier.padding(8.dp)
         )
     }
