@@ -195,7 +195,7 @@ fun HomeSection(
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier
+        modifier
             .verticalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier.height(16.dp))
@@ -249,7 +249,13 @@ private fun SootheBottomNavigation( modifier: Modifier = Modifier) {
 // Step: MySoothe App - Scaffold
 @Composable
 fun MySootheApp() {
-    // Implement composable here
+    MySootheTheme() {
+        Scaffold(
+            bottomBar = { SootheBottomNavigation() }
+        ) { padding ->
+            HomeScreen(Modifier.padding(padding))
+        }
+    }
 }
 
 private val alignYourBodyData = listOf(
@@ -327,7 +333,7 @@ fun HomeSectionPreview() {
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2, heightDp = 180)
+@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2)
 @Composable
 fun ScreenContentPreview() {
     MySootheTheme { HomeScreen() }
@@ -344,3 +350,4 @@ fun BottomNavigationPreview() {
 fun MySoothePreview() {
     MySootheApp()
 }
+
